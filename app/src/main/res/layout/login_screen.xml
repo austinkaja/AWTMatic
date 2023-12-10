@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".LoginScreenActivity">
+
+    <TextView
+        android:id="@+id/tvAWTMatic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="AWTMatic"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="374dp"
+        android:layout_height="73dp"
+        android:layout_below="@id/tvAWTMatic"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#B3FFFFFF"
+        android:hint="Username"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B3FFFFFF" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="376dp"
+        android:layout_height="81dp"
+        android:layout_below="@id/etUsername"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#B3FFFFFF"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B3FFFFFF" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="132dp"
+            android:layout_height="match_parent"
+            android:background="#1F1B24"
+            android:text="Signup"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="132dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="#635E68"
+            android:text="Login"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</RelativeLayout>
