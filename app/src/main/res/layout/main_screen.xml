@@ -10,7 +10,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/logout_icon" />
+        android:src="@drawable/logout_icon"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
         android:id="@+id/tvAWTMatic"
@@ -29,7 +31,9 @@
         android:src="@drawable/settings_icon"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp"
-        android:layout_alignTop="@id/logoutIcon"/>
+        android:layout_alignTop="@id/logoutIcon"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <EditText
         android:id="@+id/song_input"
@@ -41,7 +45,7 @@
         android:layout_marginEnd="4dp"
         android:layout_toStartOf="@id/add_song_button"
         android:backgroundTint="#B3FFFFFF"
-        android:hint="Enter Songs to Find New Music"
+        android:hint="Enter: (SongName) - (Artist)"
         android:textColor="#FFFFFF"
         android:textColorHint="#B3FFFFFF" />
 
@@ -60,8 +64,9 @@
     <ListView
         android:id="@+id/song_list"
         android:layout_width="match_parent"
-        android:layout_height="487dp"
+        android:layout_height="543dp"
         android:layout_below="@id/song_input"
+        android:layout_marginTop="11dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp" />
 
