@@ -13,17 +13,20 @@
         android:theme="@style/Theme.Frontend_AWTMatic"
         tools:targetApi="34">
         <activity
+            android:name=".GeneratedPlaylistActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainScreenActivity"
-            android:exported="true">
-        </activity>
+        <activity
+            android:name=".MainScreenActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
