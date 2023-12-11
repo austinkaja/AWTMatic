@@ -28,9 +28,6 @@ import com.cs407.frontend_awtmatic.ArtistsSongs;
 
 public class GeneratedPlaylistActivity extends AppCompatActivity {
 
-    // artists to use for prototype - SpotifyAPI nonfunctional:
-    // Jay-Z, Drake, Lil Uzi Vert, Michael Jackson, J. Cole
-
     private HashMap<String, ArrayList<String>> ARTIST_SONGS = new ArtistsSongs().generateMapping();
     private SensorManager sensorManager;
     private Sensor accelerometer;
