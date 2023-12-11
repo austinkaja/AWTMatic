@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <TextView
+        android:id="@+id/tvUserSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="User Settings"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/inputPlaylistSize"
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        android:layout_below="@id/tvUserSettings"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#B3FFFFFF"
+        android:hint="Input playlist size"
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B3FFFFFF" />
+
+    <Button
+        android:id="@+id/confirmInputSizeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@id/inputPlaylistSize"
+        android:layout_marginLeft="10dp"
+        android:background="#1F1B24"
+        android:text="Confirm"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/outputPlaylistSize"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/inputPlaylistSize"
+        android:layout_marginTop="70dp"
+        android:backgroundTint="#B3FFFFFF"
+        android:hint="Output playlist size"
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B3FFFFFF" />
+
+    <Button
+        android:id="@+id/confirmOutputSizeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@id/outputPlaylistSize"
+        android:layout_marginLeft="10dp"
+        android:background="#1F1B24"
+        android:text="Confirm"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_back"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <ImageView
+        android:id="@+id/logoutIcon"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:src="@drawable/logout_icon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+</RelativeLayout>
