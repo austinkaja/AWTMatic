@@ -24,6 +24,13 @@
         <activity android:name=".MainScreenActivity"
             android:exported="true">
         </activity>
-    </application>
 
+        <activity android:name=".SettingsScreenActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".GeneratedPlaylistActivity"
+            android:exported="false" />
+    </application>
 </manifest>

@@ -2,12 +2,19 @@ package com.cs407.frontend_awtmatic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -44,7 +51,10 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
             "Hold On, We're Going Home",
             "Passionfruit",
             "Nice For What",
-            "Best I Ever Had"
+            "Best I Ever Had",
+            "Hours in Silence",
+            "Flight's Booked"
+
     ));
 
     private ArrayList<String> lilUziVertSongs = new ArrayList<>(Arrays.asList(
@@ -87,6 +97,68 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
     ));
 
     private HashMap<String, ArrayList<String>> ARTIST_SONGS = new HashMap<String, ArrayList<String>>();
+    private SensorManager sensorManager;
+    private Sensor accelerometer;
+    private final float SHAKE_THRESHOLD_GRAVITY = 1.0003425F;
+    private final int SHAKE_SLOP_TIME_MS = 500;
+    private long shakeTimestamp;
+
+    private final SensorEventListener sensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                float x = event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
+
+                float gX = x / SensorManager.GRAVITY_EARTH;
+                float gY = y / SensorManager.GRAVITY_EARTH;
+                float gZ = z / SensorManager.GRAVITY_EARTH;
+
+                // gForce will be close to 1 when there is no movement
+                float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);
+
+                System.out.println("G Force: " + gForce);
+
+                if (gForce > SHAKE_THRESHOLD_GRAVITY) {
+                    final long now = System.currentTimeMillis();
+                    // Ignore shake events too close to each other (500ms)
+                    if (shakeTimestamp + SHAKE_SLOP_TIME_MS > now) {
+                        return;
+                    }
+
+                    shakeTimestamp = now;
+
+                    SharedPreferences preferences = getSharedPreferences("AppSettings", MODE_PRIVATE);
+                    int defaultSize = 20;
+                    int outputPlaylistSize = preferences.getInt("outputSize", defaultSize);
+                    System.out.print(outputPlaylistSize);
+                    System.out.println("YO");
+
+                    int inputPlaylistSize = 10;
+
+                    ListView generatedPlaylist = findViewById(R.id.generated_songs);
+
+                    Intent intent = getIntent();
+                    ArrayList<String> inputSongs = (ArrayList<String>) intent.getSerializableExtra("song_list");
+
+                    regeneratePlaylist(inputPlaylistSize, outputPlaylistSize, inputSongs);
+                }
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            // Can be ignored for this example
+        }
+    };
+
+    private void regeneratePlaylist(int inputPlaylistSize, int outputPlaylistSize, ArrayList<String> inputSongs) {
+        ArrayList<String> shake_generated = generateSongs(inputPlaylistSize, outputPlaylistSize, inputSongs);
+        ListView tailoredList = findViewById(R.id.generated_songs);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(GeneratedPlaylistActivity.this, R.layout.list_item, shake_generated);
+        tailoredList.setAdapter(adapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,10 +172,20 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
         ARTIST_SONGS.put("Drake", drakeSongs);
         ARTIST_SONGS.put("J Cole", jColeSongs);
 
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager != null) {
+            accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
+
         // get input and output playlist sizes from shared preferences --
 
+        SharedPreferences preferences = getSharedPreferences("AppSettings", MODE_PRIVATE);
+        int defaultSize = 20;
+        int outputPlaylistSize = preferences.getInt("outputSize", defaultSize);
+        System.out.print(outputPlaylistSize);
+        System.out.println("YO");
+
         int inputPlaylistSize = 10;
-        int outputPlaylistSize = 20;
 
         ListView generatedPlaylist = findViewById(R.id.generated_songs);
 
@@ -149,6 +231,9 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
             for(String artist : artistFreq.keySet()){
 
                 // calculating number of songs we need from each artist
+                System.out.println(artistFreq.get(artist));
+                System.out.println(inputSongs.size());
+                System.out.println(outputPlaylistSize);
                 int songsNeeded = (int) (artistFreq.get(artist) / inputSongs.size() * outputPlaylistSize);
                 System.out.println(songsNeeded);
 
@@ -192,6 +277,30 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
             }
         });
 
+        ImageView logoutIcon = findViewById(R.id.logoutIcon);
+        ImageView backButton = findViewById(R.id.backButton);
+        logoutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMainScreen();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToPreviousScreen();
+            }
+        });
+    }
+
+    private void goToMainScreen() {
+        Intent intent = new Intent(GeneratedPlaylistActivity.this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToPreviousScreen() {
+        finish();
     }
 
     public ArrayList<String> generateSongs(int inputPlaylistSize, int outputPlaylistSize, ArrayList<String> inputSongs) {
@@ -256,4 +365,19 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (accelerometer != null) {
+            sensorManager.registerListener(sensorListener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(sensorListener);
+    }
+
 }
