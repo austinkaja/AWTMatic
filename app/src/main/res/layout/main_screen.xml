@@ -64,7 +64,7 @@
     <ListView
         android:id="@+id/song_list"
         android:layout_width="match_parent"
-        android:layout_height="543dp"
+        android:layout_height="482dp"
         android:layout_below="@id/song_input"
         android:layout_marginTop="11dp"
         android:divider="@android:color/transparent"
