@@ -83,18 +83,27 @@ public class ArtistsSongs {
     ArrayList<String> gunnaSongs = new ArrayList<>(Arrays.asList("Drip Too Hard", "WUNNA", "Skybox", "Dollaz On My Head", "Speed It Up", "Baby Birkin", "Blindfold", "Cooler Than A Bitch", "One Call", "Outstanding", "Oh Okay", "Pedestrian", "Richard Millie Plain", "Top Off", "Who You Foolin"));
     ArrayList<String> playboiCartiSongs = new ArrayList<>(Arrays.asList("Magnolia", "Shoota", "Kid Cudi", "Long Time", "R.I.P.", "Sky", "Molly", "New Choppa", "Location", "Yah Mean", "FlatBed Freestyle", "Fell In Luv", "Stop Breathing", "Punk Monk", "Go2DaMoon"));
     ArrayList<String> lilDurkSongs = new ArrayList<>(Arrays.asList("3 Headed Goat", "Backdoor", "The Voice", "All Love", "When We Shoot", "No Auto Durk", "Viral Moment", "Street Affection", "Home Body", "Laugh Now Cry Later", "Better", "Like That", "Turn Myself In", "Dis Ain't What U Want", "India, Pt. 3"));
-    ArrayList<String> juiceWrldSongs = new ArrayList<>(Arrays.asList("Lucid Dreams", "All Girls Are the Same", "Robbery", "Wishing Well", "Lean Wit Me", "Bandit", "Come & Go", "Righteous", "Legends", "Smile", "Hate Me", "Armed and Dangerous", "Black & White", "Fine China", "Roses"));
+    ArrayList<String> juiceWrldSongs = new ArrayList<>(Arrays.asList("Lucid Dreams", "All Girls Are the Same", "Robbery", "Wishing Well", "Lean Wit Me", "Bandit", "Come & Go", "Righteous", "Legends", "Smile", "Hate Me", "Armed and Dangerous", "Black & White", "Fine China", "Roses", "Porridge", "Chimps", "Rental", "Bad Boy"));
     ArrayList<String> lilTeccaSongs = new ArrayList<>(Arrays.asList("Ransom", "Did It Again", "Love Me", "Out of Love", "Somebody", "Shots", "Bossanova", "Glo Up", "Phenom", "Weatherman", "Dolly", "Count Me Out", "Left, Right", "Molly Girl", "Never Left"));
     ArrayList<String> youngThugSongs = new ArrayList<>(Arrays.asList("Hot", "The London", "Check", "Best Friend", "Relationship", "Pick Up the Phone", "Go Crazy", "Stoner", "With That", "Lifestyle", "Digits", "Power", "Halftime", "Wyclef Jean", "Anybody"));
     ArrayList<String> arianaGrandeSongs = new ArrayList<>(Arrays.asList("thank u, next", "7 rings", "God is a woman", "Into You", "No Tears Left to Cry", "Side to Side", "Dangerous Woman", "Positions", "Break Free", "Bang Bang", "Breathin", "Sweetener", "34+35", "The Way", "Problem"));
     ArrayList<String> travisScottSongs = new ArrayList<>(Arrays.asList("SICKO MODE", "goosebumps", "HIGHEST IN THE ROOM", "Antidote", "STARGAZING", "Butterfly Effect", "Pick Up the Phone", "Franchise", "The Scotts", "Astrothunder", "Yosemite", "Can't Say", "90210", "Beibs in the Trap", "Don't Play"));
     ArrayList<String> duaLipaSongs = new ArrayList<>(Arrays.asList("New Rules", "Don't Start Now", "Levitating", "IDGAF", "Break My Heart", "One Kiss", "Physical", "Blow Your Mind (Mwah)", "Be the One", "Electricity", "Love Again", "We're Good", "Swan Song", "Fever", "Kiss and Make Up"));
+    ArrayList<String> swaeLeeSongs = new ArrayList<>(Arrays.asList("Sunflower", "Unforgettable", "Black Beatles", "Hurt to Look", "Guatemala", "Reality Check", "Sextasy", "Someone Said", "Won't Be Late", "Heat of the Moment", "What's In Your Heart?", "Catch Up", "Dance Like No One's Watching", "Armed and Ready", "Tupelo Shuffle", "Calling")); // Calling is the greatest song ever
+    ArrayList<String> beethovenSongs = new ArrayList<>(Arrays.asList("Symphony No.5", "Für Elise", "Moonlight Sonata", "Symphony No.9", "Pathétique Sonata", "Violin Concerto", "Eroica Symphony", "Fidelio", "Pastoral Symphony", "Emperor Concerto", "Missa Solemnis", "Grosse Fuge", "Choral Fantasy", "Appassionata Sonata", "Diabelli Variations"));
+    ArrayList<String> mozartSongs = new ArrayList<>(Arrays.asList("Eine kleine Nachtmusik", "The Magic Flute", "Don Giovanni", "The Marriage of Figaro", "Requiem", "Symphony No.40", "Piano Concerto No.21", "Rondo Alla Turca", "Lacrimosa", "Le Nozze di Figaro", "The Jupiter Symphony", "Clarinet Concerto", "Così fan tutte", "The Queen of the Night", "Ave Verum Corpus"));
+    ArrayList<String> taylorSwiftSongs = new ArrayList<>(Arrays.asList("Love Story", "Shake It Off", "Blank Space", "Bad Blood", "Look What You Made Me Do", "You Belong With Me", "Wildest Dreams", "We Are Never Ever Getting Back Together", "22", "Cardigan", "Folklore", "Evermore", "Fearless", "All Too Well", "I Knew You Were Trouble"));
+    ArrayList<String> nirvanaSongs = new ArrayList<>(Arrays.asList("Smells Like Teen Spirit", "Come As You Are", "Lithium", "In Bloom", "Heart-Shaped Box", "All Apologies", "The Man Who Sold The World", "About a Girl", "Polly", "Dumb", "Rape Me", "Pennyroyal Tea", "Lake of Fire", "Something in the Way", "Breed"));
+    ArrayList<String> theBeatlesSongs = new ArrayList<>(Arrays.asList("Hey Jude", "Let It Be", "Yesterday", "Come Together", "A Hard Day's Night", "Help!", "All You Need Is Love", "Lucy in the Sky with Diamonds", "While My Guitar Gently Weeps", "Yellow Submarine", "Eleanor Rigby", "Blackbird", "Here Comes the Sun", "The Long and Winding Road", "Revolution"));
+    ArrayList<String> brunoMarsSongs = new ArrayList<>(Arrays.asList("Uptown Funk", "Just the Way You Are", "24K Magic", "Locked Out of Heaven", "When I Was Your Man", "Grenade", "That’s What I Like", "Versace on the Floor", "Leave the Door Open", "Treasure", "It Will Rain", "Marry You", "Finesse", "Talking to the Moon", "Gorilla"));
+    ArrayList<String> edSheeranSongs = new ArrayList<>(Arrays.asList("Shape of You", "Perfect", "Thinking Out Loud", "Photograph", "Castle on the Hill", "The A Team", "Galway Girl", "Bad Habits", "Give Me Love", "Happier", "Dive", "Afterglow", "Supermarket Flowers", "Don't", "Shivers"));
     public ArtistsSongs(){};
 
     public HashMap<String, ArrayList<String>>  generateMapping(){
 
-        ArrayList<String> artists = new ArrayList<>(Arrays.asList("Jay Z", "Drake", "J Cole", "Michael Jackson", "Lil Uzi Vert", "Post Malone", "Kendrick Lamar", "Future", "21 Savage", "SZA", "Gunna", "Playboi Carti", "The Weeknd"));
 
+
+        //
         HashMap<String, ArrayList<String>> songMapping = new HashMap<String, ArrayList<String>>();
         songMapping.put("Jay Z", jayZSongs);
         songMapping.put("Drake", drakeSongs);
@@ -118,6 +127,16 @@ public class ArtistsSongs {
         songMapping.put("Ariana Grande", arianaGrandeSongs);
         songMapping.put("Travis Scott",travisScottSongs);
         songMapping.put("Dua Lipa", duaLipaSongs);
+
+        // Swae Lee, Beethoven, Mozart, Taylor Swift, Nirvana, The Beatles, Bruno Mars, Ed Sheeran
+        songMapping.put("Swae Lee", swaeLeeSongs);
+        songMapping.put("Beethoven", beethovenSongs);
+        songMapping.put("Mozart", mozartSongs);
+        songMapping.put("Taylor Swift", taylorSwiftSongs);
+        songMapping.put("Nirvana", nirvanaSongs);
+        songMapping.put("The Beatles", theBeatlesSongs);
+        songMapping.put("Bruno Mars", brunoMarsSongs);
+        songMapping.put("Ed Sheeran", edSheeranSongs);
         return songMapping;
 
 
