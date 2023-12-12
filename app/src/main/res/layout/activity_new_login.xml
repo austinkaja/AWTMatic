@@ -70,7 +70,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="110dp"
-        app:srcCompat="@drawable/baseline_library_music_24" />
+        app:srcCompat="@drawable/baseline_account_circle_24" />
 
 
 </RelativeLayout>

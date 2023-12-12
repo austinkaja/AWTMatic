@@ -33,6 +33,7 @@ public class NewLoginActivity extends AppCompatActivity {
 
                 // send user to main page
                 Intent intent = new Intent(NewLoginActivity.this, MainScreenActivity.class);
+                Toast.makeText(NewLoginActivity.this, "Account Created!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
