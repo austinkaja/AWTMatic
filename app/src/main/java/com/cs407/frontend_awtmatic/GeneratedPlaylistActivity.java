@@ -212,7 +212,7 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
             for (String artist : artistFreq.keySet()) {
 
                 // calculating number of songs we need from each artist
-                int songsNeeded = (int) (artistFreq.get(artist) / inputSongs.size() * outputPlaylistSize);
+                int songsNeeded = (int) (artistFreq.get(artist) / inputSongs.size() * outputPlaylistSize) + 1;
                 System.out.println(songsNeeded);
 
                 // get predetermined songs we have stored

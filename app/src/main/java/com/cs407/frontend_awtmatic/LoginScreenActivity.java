@@ -28,6 +28,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // will only take user to main screen if username/password pair exists.
                 System.out.println("LOGIN BUTTON PRESSED");
                 SharedPreferences credentials = getSharedPreferences("credentials", MODE_PRIVATE);
 
@@ -51,6 +52,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // puts username and password pair into shared preferences
                 System.out.println("SIGN UP BUTTON PRESSED");
                 System.out.println(username.getText().toString());
                 System.out.println(password.getText().toString());
