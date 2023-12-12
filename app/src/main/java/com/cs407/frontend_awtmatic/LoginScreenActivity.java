@@ -29,7 +29,6 @@ public class LoginScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // will only take user to main screen if username/password pair exists.
-                System.out.println("LOGIN BUTTON PRESSED");
                 SharedPreferences credentials = getSharedPreferences("credentials", MODE_PRIVATE);
 
                 String inputUsername = username.getText().toString();
@@ -37,7 +36,6 @@ public class LoginScreenActivity extends AppCompatActivity {
 
                 String defaultPassword = "Null";
                 String retrievedPassword = credentials.getString(inputUsername, defaultPassword);
-                System.out.println(retrievedPassword);
 
                 if(retrievedPassword.equals(inputPassword)) {
                     goToMainScreen();
@@ -53,9 +51,6 @@ public class LoginScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // puts username and password pair into shared preferences
-                System.out.println("SIGN UP BUTTON PRESSED");
-                System.out.println(username.getText().toString());
-                System.out.println(password.getText().toString());
                 saveUserCredentials(username.getText().toString(), password.getText().toString());
                 username.setText("");
                 password.setText("");

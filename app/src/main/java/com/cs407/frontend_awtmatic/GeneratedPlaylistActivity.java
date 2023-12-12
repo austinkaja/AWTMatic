@@ -10,7 +10,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,13 +17,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 // importing artists songs class
-import com.cs407.frontend_awtmatic.ArtistsSongs;
+
 
 public class GeneratedPlaylistActivity extends AppCompatActivity {
 
@@ -62,8 +60,6 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
                     SharedPreferences preferences = getSharedPreferences("AppSettings", MODE_PRIVATE);
                     int defaultSize = 20;
                     int outputPlaylistSize = preferences.getInt("outputSize", defaultSize);
-                    System.out.print(outputPlaylistSize);
-                    System.out.println("YO");
 
                     int inputPlaylistSize = 10;
 
@@ -72,10 +68,12 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
                     Intent intent = getIntent();
                     ArrayList<String> inputSongs = (ArrayList<String>) intent.getSerializableExtra("song_list");
 
-                    regeneratePlaylist(inputPlaylistSize, outputPlaylistSize, inputSongs);
+                    generatePlaylist(inputPlaylistSize, outputPlaylistSize, inputSongs);
                 }
             }
         }
+
+
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -83,7 +81,7 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
         }
     };
 
-    private void regeneratePlaylist(int inputPlaylistSize, int outputPlaylistSize, ArrayList<String> inputSongs) {
+    private void generatePlaylist(int inputPlaylistSize, int outputPlaylistSize, ArrayList<String> inputSongs) {
         ArrayList<String> shake_generated = generateSongs(inputPlaylistSize, outputPlaylistSize, inputSongs);
         ListView tailoredList = findViewById(R.id.generated_songs);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(GeneratedPlaylistActivity.this, R.layout.list_item, shake_generated);
@@ -108,8 +106,7 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("AppSettings", MODE_PRIVATE);
         int defaultSize = 20;
         int outputPlaylistSize = preferences.getInt("outputSize", defaultSize);
-        System.out.print(outputPlaylistSize);
-        System.out.println("YO");
+
 
         int inputPlaylistSize = 10;
 
@@ -117,16 +114,7 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         ArrayList<String> inputSongs = (ArrayList<String>) intent.getSerializableExtra("song_list");
-        System.out.println(inputSongs);
-
-        List<String> newSongs = generateSongs(inputPlaylistSize, outputPlaylistSize, inputSongs);
-        ListView tailoredList = findViewById(R.id.generated_songs);
-
-        // Create an ArrayAdapter using the default list item layout and your list of songs
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item, newSongs);
-
-        // Set the adapter to the ListView
-        tailoredList.setAdapter(adapter);
+        generatePlaylist(inputPlaylistSize, outputPlaylistSize, inputSongs);
 
 
         // BUTTON HANDLING BELOW
@@ -174,7 +162,6 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
     public ArrayList<String> generateSongs(int inputPlaylistSize, int outputPlaylistSize, ArrayList<String> inputSongs) {
         ArrayList<String> artistsProvided = new ArrayList<String>();
         if (inputSongs != null) {
-            System.out.println(inputSongs.size());
             for (int i = 0; i < inputSongs.size(); i++) {
 
                 // Extracting Artist: format for songs "Song Title - Song Artist"
@@ -183,7 +170,6 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
                 if (parts.length == 2) {
                     String artist = parts[1].trim();
                     artistsProvided.add(artist);
-                    System.out.println(artist);
                 }
             }
 
@@ -204,18 +190,15 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
 
             }
 
-            System.out.println(artistFreq.keySet());
 
             ArrayList<String> newSongs = new ArrayList<String>();
             for (String artist : artistFreq.keySet()) {
 
                 // calculating number of songs we need from each artist
                 int songsNeeded = (int) (artistFreq.get(artist) / inputSongs.size() * outputPlaylistSize) + 1;
-                System.out.println(songsNeeded);
 
                 // get predetermined songs we have stored
                 List<String> artistsSongs = ARTIST_SONGS.get(artist);
-                System.out.println(artistsSongs);
 
                 // get sample of size songsNeeded from list artistsSongs
                 Collections.shuffle(artistsSongs);
