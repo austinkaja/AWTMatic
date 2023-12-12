@@ -29,6 +29,10 @@
             android:exported="true">
         </activity>
 
+        <activity android:name=".NewLoginActivity"
+            android:exported="true">
+        </activity>
+
         <activity
             android:name=".GeneratedPlaylistActivity"
             android:exported="false" />

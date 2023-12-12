@@ -55,6 +55,9 @@ public class LoginScreenActivity extends AppCompatActivity {
                 username.setText("");
                 password.setText("");
 
+                // send user to create account page
+                Intent intent = new Intent(LoginScreenActivity.this, NewLoginActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -63,6 +66,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginScreenActivity.this, MainScreenActivity.class);
         startActivity(intent);
     }
+
     private void saveUserCredentials(String key, String value){
         SharedPreferences preferences = getSharedPreferences("credentials", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();

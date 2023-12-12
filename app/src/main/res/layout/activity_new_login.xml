@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="AWTMatic Login"
+        android:text="Create an Account"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold" />
@@ -61,15 +61,6 @@
             android:textColor="#FFFFFF"
             android:focusable="true"/>
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="132dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="#635E68"
-            android:text="Login"
-            android:textColor="#FFFFFF"
-            android:focusable="true"/>
     </LinearLayout>
 
     <ImageView
