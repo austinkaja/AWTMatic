@@ -26,6 +26,13 @@ public class NewLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String inputPassword = password.getText().toString();
+                // check if password is valid
+                if (!isPasswordValid(inputPassword)) {
+                    Toast.makeText(NewLoginActivity.this, "Password must be at least 7 characters, contain a special symbol, and have an uppercase letter.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 // puts username and password pair into shared preferences
                 saveUserCredentials(username.getText().toString(), password.getText().toString());
                 username.setText("");
@@ -37,6 +44,17 @@ public class NewLoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean isPasswordValid(String password) {
+        if (password.length() < 7) {
+            return false;
+        }
+
+        boolean hasUppercase = !password.equals(password.toLowerCase());
+        boolean hasSpecial = !password.matches("[A-Za-z0-9 ]*");
+
+        return hasUppercase && hasSpecial;
     }
 
     private void saveUserCredentials(String key, String value){
