@@ -31,8 +31,8 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
     private HashMap<String, ArrayList<String>> ARTIST_SONGS = new ArtistsSongs().generateMapping();
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private final float SHAKE_THRESHOLD_GRAVITY = 1.0003425F;
-    private final int SHAKE_SLOP_TIME_MS = 500;
+    private final float SHAKE_THRESHOLD_GRAVITY = 1.0003525F;
+    private final int SHAKE_SLOP_TIME_MS = 1000;
     private long shakeTimestamp;
 
     private final SensorEventListener sensorListener = new SensorEventListener() {
@@ -49,8 +49,6 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
 
                 // gForce will be close to 1 when there is no movement
                 float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);
-
-                System.out.println("G Force: " + gForce);
 
                 if (gForce > SHAKE_THRESHOLD_GRAVITY) {
                     final long now = System.currentTimeMillis();
@@ -81,7 +79,7 @@ public class GeneratedPlaylistActivity extends AppCompatActivity {
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            // Can be ignored for this example
+            // Do not need
         }
     };
 
